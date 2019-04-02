@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+button {
+  border-radius: 50%;
+  border: 1px solid #474747;
+  background-color: #414141;
+  color: orangered;
+  box-shadow: 1px 2px 2px rgba(100, 100, 100, 0.2);
+  cursor: pointer;
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 24px;
+  height: 24px;
+}
+
+button:active {
+  transform: scale(0.8);
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+.zoom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: orangered;
+  box-shadow: 1px 2px 2px rgba(150, 150, 150, 0.2);
+  user-select: none;
+  padding: 8px 12px;
+}
