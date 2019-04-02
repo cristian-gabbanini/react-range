@@ -26,16 +26,7 @@ function App() {
       <div style={{ zoom: zoomValue, backgroundColor: "#EAEAEA" }}>
         <h1>Hello CodeSandbox</h1>
       </div>
-      <div
-        className="zoom"
-        style={{
-          position: "fixed",
-          bottom: 10,
-          right: 10,
-          backgroundColor: "#DADADA",
-          borderRadius: 4
-        }}
-      >
+      <div className="zoom">
         <button onClick={handleZoomDec}>-</button>
         <input
           type="range"
