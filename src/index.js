@@ -1,14 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
-
-function useCounter(step = 1, defaultValue = 0) {
-  const [count, setCount] = useState(defaultValue);
-  const inc = () => setCount(c => c + step);
-  const dec = () => setCount(c => c - step);
-  return [count, inc, dec, setCount];
-}
 
 function useRange({ min = 0, max = 100, step = 1, defaultValue = 50 } = {}) {
   const [count, setCount] = useState(defaultValue);
@@ -25,17 +18,19 @@ function useRange({ min = 0, max = 100, step = 1, defaultValue = 50 } = {}) {
   return [count, increment, decrement, setCount];
 }
 
-function App() {
-  const rangeOptions = {
-    min: 0.05,
-    max: 1,
-    step: 0.05,
-    defaultValue: 0.25
-  };
-  const [zoomValue, inc, dec, setZoomValue] = useRange(rangeOptions);
+function Range(props) {
+  const [value, inc, dec, setValue] = useRange(props);
+  const { min, max, step, onChange } = props;
+
+  useEffect(
+    () => {
+      onChange(value);
+    },
+    [value]
+  );
 
   function handleZoomChange(e) {
-    setZoomValue(parseFloat(e.target.value));
+    setValue(parseFloat(e.target.value));
   }
   function handleZoomInc(e) {
     inc();
@@ -43,11 +38,42 @@ function App() {
   function handleZoomDec(e) {
     dec();
   }
+
+  return (
+    <div className="range-control">
+      <button onClick={handleZoomDec}>-</button>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        value={value}
+        step={step}
+        onChange={handleZoomChange}
+      />
+      <button onClick={handleZoomInc}>+</button>
+      <div className="range-value">{Math.round(value * 100)}%</div>
+    </div>
+  );
+}
+
+function App() {
+  const rangeOptions = {
+    min: 0.05,
+    max: 1,
+    step: 0.05,
+    defaultValue: 0.25
+  };
+
+  const [zoom, setZoom] = useState(rangeOptions.defaultValue);
+
+  function rangeChangeHandler(value) {
+    setZoom(value);
+  }
   return (
     <div className="App">
       <figure
         style={{
-          zoom: zoomValue,
+          zoom: zoom,
           backgroundColor: "#EAEAEA",
           textAlign: "center",
           padding: 30,
@@ -57,19 +83,7 @@ function App() {
       >
         <img src="https://img.purch.com/h/1400/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzEwNC84MTkvb3JpZ2luYWwvY3V0ZS1raXR0ZW4uanBn" />
       </figure>
-      <div className="range-control">
-        <button onClick={handleZoomDec}>-</button>
-        <input
-          type="range"
-          min={rangeOptions.min}
-          max={rangeOptions.max}
-          value={zoomValue}
-          step={rangeOptions.step}
-          onChange={handleZoomChange}
-        />
-        <button onClick={handleZoomInc}>+</button>
-        <div className="range-value">{Math.round(zoomValue * 100)}%</div>
-      </div>
+      <Range {...rangeOptions} onChange={rangeChangeHandler} />
     </div>
   );
 }

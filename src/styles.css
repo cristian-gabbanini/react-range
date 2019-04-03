@@ -48,9 +48,9 @@ button:focus {
   user-select: none;
   padding: 8px 12px;
   position: fixed;
-  top: 50%;
+  bottom: 40px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   background-color: #515251;
   border-radius: 4px;
 }
