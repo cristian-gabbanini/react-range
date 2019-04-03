@@ -9,8 +9,8 @@ button {
   display: block;
   border-radius: 50%;
   border: 1px solid #474747;
-  background-color: #414141;
-  color: orangered;
+  background-color: #636463;
+  color: #deefef;
   box-shadow: 2px 1px 2px rgba(100, 100, 100, 0.35);
   cursor: pointer;
   flex-shrink: 0;
@@ -49,7 +49,7 @@ button:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #dadada;
+  background-color: #515251;
   border-radius: 4px;
 }
 
