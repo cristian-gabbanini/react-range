@@ -3,6 +3,8 @@ body {
   padding: 0;
   font-family: Sans-Serif;
   overflow: hidden;
+  text-align: center;
+  background-color: #312931;
 }
 
 button {

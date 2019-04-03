@@ -27,10 +27,10 @@ function useRange({ min = 0, max = 100, step = 1, defaultValue = 50 } = {}) {
 
 function App() {
   const rangeOptions = {
-    min: 0,
-    max: 4,
-    step: 0.1,
-    defaultValue: 0.2
+    min: 0.05,
+    max: 1,
+    step: 0.05,
+    defaultValue: 0.25
   };
   const [zoomValue, inc, dec, setZoomValue] = useRange(rangeOptions);
 
@@ -45,16 +45,18 @@ function App() {
   }
   return (
     <div className="App">
-      <div
+      <figure
         style={{
           zoom: zoomValue,
           backgroundColor: "#EAEAEA",
           textAlign: "center",
-          padding: 10
+          padding: 30,
+          borderRadius: 15,
+          display: "inline-block"
         }}
       >
         <img src="https://img.purch.com/h/1400/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzEwNC84MTkvb3JpZ2luYWwvY3V0ZS1raXR0ZW4uanBn" />
-      </div>
+      </figure>
       <div className="range-control">
         <button onClick={handleZoomDec}>-</button>
         <input
