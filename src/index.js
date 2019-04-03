@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
 import "./styles.css";
+
 function useCounter(step = 1, defaultValue = 0) {
   const [count, setCount] = useState(defaultValue);
   const inc = () => setCount(c => c + step);
@@ -27,9 +27,9 @@ function useRange({ min = 0, max = 100, step = 1, defaultValue = 50 } = {}) {
 function App() {
   const rangeOptions = {
     min: 0,
-    max: 2,
+    max: 4,
     step: 0.1,
-    defaultValue: 1
+    defaultValue: 0.2
   };
   const [zoomValue, inc, dec, setZoomValue] = useRange(rangeOptions);
 
@@ -44,8 +44,15 @@ function App() {
   }
   return (
     <div className="App">
-      <div style={{ zoom: zoomValue, backgroundColor: "#EAEAEA" }}>
-        <h1>Hello CodeSandbox</h1>
+      <div
+        style={{
+          zoom: zoomValue,
+          backgroundColor: "#EAEAEA",
+          textAlign: "center",
+          padding: 10
+        }}
+      >
+        <img src="https://img.purch.com/h/1400/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzEwNC84MTkvb3JpZ2luYWwvY3V0ZS1raXR0ZW4uanBn" />
       </div>
       <div className="range-control">
         <button onClick={handleZoomDec}>-</button>
