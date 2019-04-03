@@ -66,7 +66,7 @@ function App() {
           onChange={handleZoomChange}
         />
         <button onClick={handleZoomInc}>+</button>
-        <div>{Math.round(zoomValue * 100)}%</div>
+        <div className="range-value">{Math.round(zoomValue * 100)}%</div>
       </div>
     </div>
   );

@@ -53,6 +53,21 @@ button:focus {
   border-radius: 4px;
 }
 
+.range-value {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  text-align: center;
+  font-size: 12px;
+  color: #deefef;
+  pointer-events: none;
+  background-color: rgba(50, 50, 50, 0.55);
+  padding: 4px;
+  border-radius: 4px;
+}
+
 input[type="range"]::-webkit-slider-runnable-track {
   height: 4px;
   cursor: pointer;
